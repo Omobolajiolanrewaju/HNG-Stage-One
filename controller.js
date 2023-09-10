@@ -4,7 +4,7 @@ const path = require('path')
 const dbFilePath = path.join(__dirname, "db.json")
 const queryHandler = async(req, res) => {
     const currentDay = new Date().toLocaleDateString('en-US', { weekday: 'long' })
-    const currentUtcTime = new Date().toISOString();
+    const currentUtcTime = new Date().toISOString().replace(/\.\d{3}Z$/, 'Z');
     
     const name = req.query.slack_name
     const track = req.query.track
