@@ -4,7 +4,7 @@ const path = require('path')
 const dbFilePath = path.join(__dirname, "db.json")
 const queryHandler = async(req, res) => {
     const currentDay = new Date().toLocaleDateString('en-US', { weekday: 'long' })
-    const currentTime = new Date().toLocaleTimeString();
+    const currentUtcTime = new Date().toISOString();
     
     const name = req.query.slack_name
     const track = req.query.track
@@ -12,7 +12,7 @@ const queryHandler = async(req, res) => {
     const update = {
         slack_name: name,
         current_day: currentDay,
-        utc_time: currentTime,
+        utc_time: currentUtcTime,
         track: track
     }
 
